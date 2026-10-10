@@ -1,0 +1,52 @@
+V FLARE WEBSITE DEMO — DEPLOYMENT GUIDE
+
+The website is static HTML/CSS/JavaScript. No build, database or installation is needed.
+Extract this ZIP before uploading to GitHub. Keep index.html and assets/ together.
+Contact form opens an email draft; it does not send email or store submissions.
+
+OPTION A — GITHUB PAGES WITH A GODADDY DOMAIN
+1. Create a new GitHub repository named vflare-demo. Use Public for a free-account Pages demo.
+2. Upload index.html, assets/ and .nojekyll to the repository root. Upload the extracted files, not the ZIP.
+3. Commit to main.
+4. Open Settings > Pages. Choose Deploy from a branch, main, /(root), Save.
+5. Open the URL shown by GitHub: https://YOUR-USERNAME.github.io/vflare-demo/
+6. To use a demo subdomain, first enter demo.YOUR-DOMAIN.com under Pages > Custom domain and save.
+7. At the authoritative DNS provider (GoDaddy only if it manages your DNS), add:
+   Type: CNAME | Name: demo | Value: YOUR-USERNAME.github.io
+   Use the username host only, without https:// or /vflare-demo/.
+8. Wait for DNS checks and certificate readiness, then enable Enforce HTTPS in Pages.
+9. Verify the custom domain in GitHub account Settings > Pages using the TXT value GitHub provides.
+
+Using a demo subdomain keeps the existing main website address separate.
+If Cloudflare nameservers manage your domain, make DNS changes at Cloudflare rather than GoDaddy.
+
+OPTIONAL — ROOT DOMAIN ON GITHUB PAGES
+Set your actual root domain in GitHub Pages before changing DNS.
+For @, create four A records: 185.199.108.153, 185.199.109.153,
+185.199.110.153, 185.199.111.153.
+For www, add CNAME to YOUR-USERNAME.github.io.
+Review conflicting web records before changes. Preserve email MX and TXT records.
+Do not repoint an existing business root domain merely to test the demo.
+
+OPTION B — GODADDY CPANEL HOSTING
+1. GoDaddy > My Products > Web Hosting > Manage > cPanel Admin > File Manager.
+2. For a demo in an existing website, create public_html/vflare-demo/.
+3. Upload this ZIP there and Extract. index.html must be directly inside vflare-demo/.
+4. Remove the uploaded ZIP and deployment guide from the web folder after extraction.
+5. Visit https://YOUR-DOMAIN.com/vflare-demo/.
+6. For a dedicated demo subdomain, use its configured document root instead.
+This route needs cPanel/Linux web hosting; GoDaddy Website Builder is a different product.
+For this route GitHub can retain the source; repository pushes do not automatically update GoDaddy.
+
+TEST AFTER DEPLOYMENT
+Open the site on desktop and phone. Test menu, images, service links, call,
+WhatsApp and email enquiry. Review/send the draft in your email app.
+
+DETAILS NEEDED FOR THE NEXT DEPLOYMENT STEP
+Actual domain, GitHub username/repository URL, and whether GoDaddy provides
+only the domain or cPanel hosting. Do not share passwords in chat.
+
+OFFICIAL REFERENCES
+https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
+https://www.godaddy.com/en-in/help/manage-files-in-my-web-hosting-cpanel-account-12426
